@@ -92,7 +92,8 @@ async function approveCertificate(req, res) {
     const { Empid} = req.body;
     console.log(Empid)
     try {
-      const user = await Certificate.findOne({ Empid: Empid});
+      const user = await UserDetails.findOne({ Empid: Empid});
+      console.log(user)
       if (!user) {
         return res.status(400).json({ error: "user not found" });
       }

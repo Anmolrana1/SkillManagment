@@ -131,7 +131,7 @@ function Profile() {
                     <strong>DOJ:</strong>
                 </td>
                 <td>
-                    {new Date(userData.DOJ).toLocaleDateString('en-US')}
+                    {userData.DOJ}
                 </td>
             </tr>
         </tbody>

@@ -96,13 +96,22 @@ function EmployeeDetails() {
       setEmployee(true);
       setSearchQuery('')
       setError('')
+      setUserDataShow(false);
+      setUserCertificatesShow(false);
+      setUserProjectsShow(false);
+      setUserSkillShow(false);
       if(response.status===400){
+        setEmployee(false);
         alert('User Not Found')
       }
     } catch (error) {
       setError('User not found!');
       console.error("Error retrieving user Email:", error);
       setEmployee(false);
+      setUserDataShow(false);
+      setUserCertificatesShow(false);
+      setUserProjectsShow(false);
+      setUserSkillShow(false);
     }
   }
 

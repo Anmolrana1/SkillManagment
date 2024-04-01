@@ -228,7 +228,7 @@ function ProjectExperence() {
     <p>Loading...</p>
   ) : error ? (
     <p>{error}</p>
-  ) : userProjects ? (
+  ) : userProjects.length>0 ? (
     <div className="table-responsive">
       <table className="table" style={{ }}>
         <thead>

@@ -8,7 +8,7 @@ const userDetailsSchema = new mongoose.Schema({
   Gender: String, 
   Password: { type: String, required: true },
   Designation: { type: String, required: true },
-  DOJ: { type: Date, required: true },
+  DOJ: { type:String, required: true },
   Role: { type: String, required: true }
 });
 
