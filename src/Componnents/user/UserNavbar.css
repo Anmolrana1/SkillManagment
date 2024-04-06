@@ -1,0 +1,25 @@
+.menu {
+    color: white;
+}
+
+.menu:hover {
+    color: rgb(3, 0, 0);
+    transform: scale(1.1);
+    transition-duration: 1s;
+}
+
+.menu:active {
+    color: rgb(0, 234, 255);
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    font-size: larger;
+}
+
+.lbutton:hover{
+    background-color: rgb(128, 5, 5);
+}
