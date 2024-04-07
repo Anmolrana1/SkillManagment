@@ -15,7 +15,7 @@ import CreateUserIcon from "@mui/icons-material/PersonAdd";
 import EmployeeDetailIcon from "@mui/icons-material/People";
 
 function UserSidebar() {
-  const { isLoggedIn, logout } = useAuth();
+  const {  logout } = useAuth();
   const [Role, setRole] = useState("");
 
   const [isOpen, setIsOpen] = useState(true);
