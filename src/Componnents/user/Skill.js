@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserNavbar from "./UserNavbar";
+import UserSidebar from "./UserSidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function Skill({isLoggedIn}) {
@@ -112,14 +112,15 @@ function Skill({isLoggedIn}) {
     }
   };
   return (
-    <>
-      <UserNavbar />
+    <div style={{display:'flex'}}>
+      <UserSidebar />
+      <div style={{ marginLeft:'1rem',width:'100%',minHeight:'100vh'}}>
       <div
         className="container mt-4 p-4"
         style={{
           boxShadow:
             "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-          borderRadius: "2rem",
+          borderRadius: "2rem"
         }}
       >
         <div className="row justify-content-center">
@@ -219,7 +220,8 @@ function Skill({isLoggedIn}) {
           <p>No Skills To Show</p>
         )}
       </div>
-    </>
+      </div>
+    </div>
   );
 }
 

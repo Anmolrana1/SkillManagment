@@ -13,7 +13,9 @@ import CertificateForApp from './Componnents/Approver/CertificateForApp';
 import ProjectForApp from './Componnents/Approver/ProjectForApp';
 import EmployeeDetails from './Componnents/Admin/EmployeeDetails';
 import AddSkill from './Componnents/Admin/AddSkill';
+import UserSidebar from './Componnents/user/UserSidebar';
 import { useEffect, useState } from 'react';
+
 
 function App() {
   const [isLoggedIn,setIsLoggedIn]=useState(false);
@@ -27,7 +29,8 @@ function App() {
    
      <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn}/>}></Route>
+                <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn}/>}></Route>
+              
                 <Route path="/Signup" element={<Signup isLoggedIn={isLoggedIn}/>} />
                 <Route path="/Reset" element={<ResetPassword isLoggedIn={isLoggedIn}/>} />
                 <Route path="/ResetPassword" element={<ChangePassword isLoggedIn={isLoggedIn}/>} />
@@ -39,6 +42,7 @@ function App() {
                 <Route path="/ProjectForApproval" element={<ProjectForApp isLoggedIn={isLoggedIn} role={role}/>} />
                 <Route path="/EmployeeDetails" element={<EmployeeDetails isLoggedIn={isLoggedIn} role={role}/>} />
                 <Route path="/AddSkill" element={<AddSkill isLoggedIn={isLoggedIn} role={role}/>} />
+                <Route path="/UserSidebar" element={<UserSidebar/>}/>
       </Routes>
      </BrowserRouter>
     </div>

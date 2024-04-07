@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import UserNavbar from "../user/UserNavbar";
+import UserSidebar from "../user/UserSidebar";
 import { jwtDecode } from "jwt-decode";
 
 function Signup({isLoggedIn}) {
@@ -97,9 +97,9 @@ function Signup({isLoggedIn}) {
     <section
       className="vh-1000"
       style={{backgroundColor: "rgb(220, 220, 220)",boxShadow:
-      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}
+      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",display:'flex'}}
     >
-      <UserNavbar/>
+      <UserSidebar/>
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100" style={{ padding: "5rem", paddingTop: "2rem" }}>
           <div className="col-lg-12 col-xl-11">

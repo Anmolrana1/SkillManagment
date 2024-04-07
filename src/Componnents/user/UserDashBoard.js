@@ -3,7 +3,7 @@ import axios from "axios";
 import { Paper, Typography, Grid, Avatar } from "@mui/material";
 import { Container } from "react-bootstrap";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import UserNavbar from "./UserNavbar";
+import UserSidebar from "./UserSidebar";
 import { useNavigate } from "react-router-dom";
 
 
@@ -40,20 +40,23 @@ function UserDashBoard({isLoggedIn}) {
   }, [Email]);
   //border:"1px solid black" style={{border:"1px solid black"}}
   return (
-    <div  style={{ backgroundColor: "rgb(220, 220, 220)",height:"100vh" }} >
-      <UserNavbar />
+    <div  style={{ backgroundColor: "rgb(220, 220, 220)",height:"100vh",display:'flex',minHeight:'100vh' }} >
+      <UserSidebar />
+      <div style={{display:'flex',justifyContent:'center',alignItems:'center',width:"100%",flexDirection:'column'}}>
       <Paper 
         elevation={3}
         style={{
-          padding: "20px",
-          maxWidth: "700px",
-          margin: "40px auto",
+          width:'50%',
+          padding:'2rem',
           borderRadius: "2rem",
           boxShadow:
             "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+            overflow:'auto'
         }}
         className="mt-2"
       >
+        <div >
+        
         <Grid
           item
           xs={12}
@@ -125,7 +128,9 @@ function UserDashBoard({isLoggedIn}) {
             </table>
           </Container>
         </Grid>
+        </div>
       </Paper>
+      </div>
     </div>
   );
 }

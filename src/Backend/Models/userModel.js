@@ -26,10 +26,10 @@ const projectExperienceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    description: {
+    Tech_stack: [{
         type: String,
         required: true
-    },
+    }],
     startDate: {
         type: String,
         required: true

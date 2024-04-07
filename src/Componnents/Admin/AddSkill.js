@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserNavbar from "../user/UserNavbar";
+import UserSidebar from "../user/UserSidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -81,8 +81,9 @@ function AddSkill({isLoggedIn,role}) {
     }
   };
   return (
-    <>
-      <UserNavbar />
+    <div style={{display:'flex'}}>
+      <UserSidebar />
+      <div style={{display:'block',width:'100%',minHeight:'100vh'}}>
       <div
         className="container mt-4 p-4"
         style={{
@@ -129,31 +130,37 @@ function AddSkill({isLoggedIn,role}) {
     Added Skills
   </h3>
   {loading ? (
-    <p>Loading...</p>
-  ) : error ? (
-    <p>{error}</p>
-  ) : userCertificates.length > 0 ? (
-    <div className="table-responsive">
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">Skill Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {userCertificates.map((item) => (
-            <tr key={item._id}>
-              <td>{item.skillName ? item.skillName.toUpperCase() : ""}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  ) : (
-    <p>No Certificates To Show</p>
-  )}
+          <p>Loading...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : userCertificates.length > 0 ? (
+          <div className="row">
+            {userCertificates.map((item) => (
+              <div className="col-md-4 mb-4" key={item._id}>
+                <div
+                  className="card"
+                  style={{
+                    boxShadow:
+                      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+                    borderRadius: "2rem",
+                
+                  }}
+                >
+                  <div className="card-body">
+                    <h6 className="card-title">
+                      {item.skillName ? item.skillName.toUpperCase() : ""}
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No Skills To Show</p>
+        )}
 </div>
-    </>
+</div>
+    </div>
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserNavbar from "../user/UserNavbar";
+import UserSidebar from "../user/UserSidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -75,8 +75,8 @@ function CertificateForApp({role,isLoggedIn}) {
   };
 
   return (
-    <>
-      <UserNavbar />
+    <div style={{display:'flex' ,minHeight:'100vh'}}>
+      <UserSidebar />
       <div className="container mt-5">
         <h3 className="mb-4">Certificates For Approval</h3>
         {loading ? (
@@ -137,7 +137,7 @@ function CertificateForApp({role,isLoggedIn}) {
           <p>No Certificates To Show</p>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserNavbar from "./UserNavbar";
+import UserSidebar from "./UserSidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function Certificate({isLoggedIn}) {
@@ -117,8 +117,9 @@ function Certificate({isLoggedIn}) {
     }
   };
   return (
-    <>
-      <UserNavbar />
+    <div style={{display:'flex'}}>
+      <UserSidebar />
+      <div style={{display:'block',marginLeft:'2rem',width:'100%',minHeight:'100%'}}>
       <div
         className="container mt-4 p-4"
         style={{
@@ -255,8 +256,9 @@ function Certificate({isLoggedIn}) {
   <p>No Certificates To Show</p>
 )}
 </div>
+</div>
 
-    </>
+    </div>
   );
 }
 

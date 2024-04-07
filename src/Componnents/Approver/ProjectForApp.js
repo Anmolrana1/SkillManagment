@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserNavbar from "../user/UserNavbar";
+import UserSidebar from "../user/UserSidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function ProjectExperence({role,isLoggedIn}) {
@@ -75,8 +75,8 @@ function ProjectExperence({role,isLoggedIn}) {
 
 
   return (
-    <>
-      <UserNavbar />
+    <div style={{display:'flex'}}>
+      <UserSidebar />
 
       <div className="container mt-5">
   <h3 className="mb-4" style={{ fontFamily: "monospace", fontWeight: "bolder" }}>
@@ -129,7 +129,7 @@ function ProjectExperence({role,isLoggedIn}) {
 </div>
 
 
-    </>
+    </div>
   );
 }
 

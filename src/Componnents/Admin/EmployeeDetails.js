@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import TextField from "@mui/material/TextField";
-import UserNavbar from "../user/UserNavbar";
+import UserSidebar from "../user/UserSidebar";
 import axios from "axios";
 import { Container } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
@@ -95,6 +95,10 @@ function EmployeeDetails({isLoggedIn,role}) {
   }
 
   const handleClick = async () => {
+    if(searchQuery===""){
+      alert("First Enter Employee id")
+      return;
+    }
     try {
       const response = await axios.post(
         "http://localhost:5000/profile/getEmail",
@@ -128,8 +132,10 @@ function EmployeeDetails({isLoggedIn,role}) {
   };
 
   return (
-    <>
-      <UserNavbar />
+    <div style={{display:'flex'}}>
+      <UserSidebar />
+    <div style={{display:'block',width:'100%',minHeight:'100vh'}}>
+      <h1 style={{ fontWeight: 'bold', color: '#333', marginBottom: '20px' ,margin:'2rem',textDecoration:'underline'}}>Personnel Records</h1>
       <div className="mt-4" style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
         <b style={{ marginRight: '10px',fontSize:"large" }}>Enter Employee ID:</b>
         <TextField
@@ -308,7 +314,8 @@ function EmployeeDetails({isLoggedIn,role}) {
 
      
      </div>:<div className="mt-6" style={{ color: 'red',fontWeight:'bolder',fontSize:'larger', }}> {error && <p   >{error}</p>}</div>}
-    </>
+     </div>
+    </div>
   );
 }
 

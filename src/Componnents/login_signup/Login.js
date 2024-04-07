@@ -43,6 +43,7 @@ function Login({setIsLoggedIn}) {
         const decoded = jwtDecode(token);
         console.log("decoded token:", decoded);
         localStorage.setItem("email",loginData.Email)
+        localStorage.setItem("role",response.data.role)
           navigate("/userdashboard");
       }
       if(response.status === 201) {

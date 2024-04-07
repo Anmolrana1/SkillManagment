@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserNavbar from "./UserNavbar";
+import UserSidebar from "./UserSidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -130,8 +130,9 @@ function ProjectExperence({ isLoggedIn }) {
   };
 
   return (
-    <>
-      <UserNavbar />
+    <div style={{display:'flex'}}>
+      <UserSidebar />
+      <div style={{display:'flex',alignItems:'center',flexDirection:'column',justifyContent:'center',width:'100%',minHeight:'100vh',marginLeft:'1rem'}}>
       <div className="container mt-4 p-4" style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", borderRadius: "2rem" }}>
         <div className="row justify-content-center">
           <div className="col-md-6">
@@ -230,7 +231,7 @@ function ProjectExperence({ isLoggedIn }) {
                 {userProjects.map((items) => (
                   <tr key={items._id} style={{ height: "60px" }}>
                     <td>{items.projectName ? items.projectName.toUpperCase() : ""}</td>
-                    <td>{items.Tech_stack && items.Tech_stack.join(", ")}</td>
+                    <td>{items.Tech_stack ? items.Tech_stack:" "}</td>
                     <td>{new Date(items.startDate).toLocaleDateString("en-US")}</td>
                     <td>{new Date(items.endDate).toLocaleDateString("en-US")}</td>
                     <td>{items.role ? items.role.toUpperCase() : ""}</td>
@@ -244,7 +245,8 @@ function ProjectExperence({ isLoggedIn }) {
           <p>No Project Experiences To Show</p>
         )}
       </div>
-    </>
+      </div>
+    </div>
   );
 }
 
