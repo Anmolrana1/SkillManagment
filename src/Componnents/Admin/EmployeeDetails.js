@@ -5,10 +5,12 @@ import axios from "axios";
 import { Container } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 
+
 function EmployeeDetails({isLoggedIn,role}) {
+
   const navigate=useNavigate()
   useEffect(() => {
-    if (!isLoggedIn || role === 'Admin') {
+    if (!isLoggedIn && role === 'Admin') {
       navigate('/');
       return; 
     }
