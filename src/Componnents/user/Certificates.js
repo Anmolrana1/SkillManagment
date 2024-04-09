@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import UserSidebar from "./UserSidebar";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-function Certificate({isLoggedIn}) {
+
+function Certificate() {
   const [certificateDetails, setCertificateDetails] = useState({
     Email: "",
     certificateName: "",
@@ -12,19 +12,13 @@ function Certificate({isLoggedIn}) {
     credentialID: "",
     Status: "",
   });
-  const navigate=useNavigate()
+ 
   const [Email, setEmail] = useState("");
   const [userCertificates, setUserCertificates] = useState([]);
   const [skill, setSkill] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/');
-      return; 
-  }
-}, [navigate,isLoggedIn]);
 
   useEffect(() => {
     const Email = localStorage.getItem("email");
@@ -74,7 +68,9 @@ function Certificate({isLoggedIn}) {
     const value = e.target.value;
     setCertificateDetails((prev) => ({
       ...prev,
-      [fieldName]: value,
+      [fieldName]: value,  
+
+
     }));
   };
 

@@ -178,6 +178,7 @@ async function addCertificate(req, res) {
 
     const certificateExist = await Certificate.findOne({
       certificateName: certificateName,
+      issuingOrganization:issuingOrganization,
       Empid: user.Empid,
     });
     if (certificateExist) {

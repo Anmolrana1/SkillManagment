@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
 import UserSidebar from "./UserSidebar";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-function Skill({isLoggedIn}) {
 
-  const navigate=useNavigate()
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/');
-      return; 
-  }
-}, [navigate,isLoggedIn]);
+function Skill() {
+
+
   const [skillDetails, setSkillDetails] = useState({
     Email: "",
     skillName: "",

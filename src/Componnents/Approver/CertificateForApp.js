@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from "react";
 import UserSidebar from "../user/UserSidebar";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-function CertificateForApp({role,isLoggedIn}) {
-  
-  const navigate=useNavigate()
-  useEffect(() => {
-    console.log("role:",role)
-    if (!isLoggedIn || role === 'Admin' ||role==='User') {
-      navigate('/');
-      return; 
-    }
-}, [navigate,isLoggedIn,role]);
+
+function CertificateForApp() {
+
   const [userCertificates, setUserCertificates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");

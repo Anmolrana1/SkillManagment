@@ -1,17 +1,12 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 import UserSidebar from "../user/UserSidebar";
 import { jwtDecode } from "jwt-decode";
 
-function Signup({isLoggedIn}) {
-  const navigate=useNavigate()
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/');
-      return; 
-    }},[isLoggedIn,navigate])
+function Signup() {
+
   const [userData, setUserData] = useState({
     FirstName: "",
     LastName: "",

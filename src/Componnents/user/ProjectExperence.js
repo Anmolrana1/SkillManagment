@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import UserSidebar from "./UserSidebar";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-function ProjectExperence({ isLoggedIn }) {
-  const navigate = useNavigate();
+function ProjectExperence() {
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/");
-    }
-  }, [navigate, isLoggedIn]);
 
   const [projectDetails, setProjectDetails] = useState({
     Email: "",

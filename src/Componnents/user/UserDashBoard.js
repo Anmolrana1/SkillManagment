@@ -14,11 +14,8 @@ function UserDashBoard({isLoggedIn}) {
 
   useEffect(() => {
     setEmail(localStorage.getItem("email"));
-    if (!isLoggedIn) {
-      navigate('/');
-      return; 
-  }
-}, [navigate,isLoggedIn]);
+
+}, [navigate]);
 
   useEffect(() => {
     async function fetchData() {

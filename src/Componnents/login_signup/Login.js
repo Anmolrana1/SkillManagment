@@ -44,6 +44,7 @@ function Login({setIsLoggedIn}) {
         console.log("decoded token:", decoded);
         localStorage.setItem("email",loginData.Email)
         localStorage.setItem("role",response.data.role)
+        localStorage.setItem('isLoggedIn',true)
           navigate("/userdashboard");
       }
       if(response.status === 201) {

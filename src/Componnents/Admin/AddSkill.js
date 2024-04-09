@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from "react";
 import UserSidebar from "../user/UserSidebar";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-function AddSkill({isLoggedIn,role}) {
 
-  const navigate=useNavigate()
-  useEffect(() => {
-    if (!isLoggedIn || role === 'Admin') {
-      navigate('/');
-      return; 
-    }
-}, [navigate,isLoggedIn,role]);
+function AddSkill() {
+
   const [certificateDetails, setCertificateDetails] = useState({
     skillName:""
   });

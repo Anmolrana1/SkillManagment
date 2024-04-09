@@ -1,20 +1,13 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import UserSidebar from "../user/UserSidebar";
 import axios from "axios";
 import { Container } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";
 
 
-function EmployeeDetails({isLoggedIn,role}) {
 
-  const navigate=useNavigate()
-  useEffect(() => {
-    if (!isLoggedIn && role === 'Admin') {
-      navigate('/');
-      return; 
-    }
-}, [navigate,isLoggedIn,role]);
+function EmployeeDetails() {
+
   const [searchQuery, setSearchQuery] = useState("");
   const [Email, setEmail] = useState('');
   const [Employee, setEmployee] = useState(false);
@@ -264,7 +257,7 @@ function EmployeeDetails({isLoggedIn,role}) {
                 <thead>
                   <tr>
                     <th scope="col">Project Name</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Tech_Stack</th>
                     <th scope="col">Start Date</th>
                     <th scope="col">End Date</th>
                     <th scope="col">Role</th>
@@ -275,7 +268,7 @@ function EmployeeDetails({isLoggedIn,role}) {
                   {userProjects.map((item) => (
                     <tr key={item._id}>
                       <td>{item.projectName ? item.projectName.toUpperCase() : ""}</td>
-                      <td>{item.description ? item.description.toUpperCase() : ""}</td>
+                      <td>{item.Tech_stack ? item.Tech_stack:" "}</td>
                       <td>{new Date(item.startDate).toLocaleDateString('en-US')}</td>
                       <td>{new Date(item.endDate).toLocaleDateString('en-US')}</td>
                       <td>{item.role ? item.role.toUpperCase() : ""}</td>

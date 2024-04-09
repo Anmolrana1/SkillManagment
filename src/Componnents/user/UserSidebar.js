@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 // import { Link } from "react-router-dom";
 // import { useAuth } from "../AuthContext";
-
+import './UserNavbar.css'
 import LogoutIcon from "@mui/icons-material/Logout";
 import {  IconButton } from "@mui/material";
 import FitbitIcon from "@mui/icons-material/Fitbit";
@@ -22,6 +22,7 @@ function UserSidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const [active, setActive] = useState("");
   const location = useLocation();
+  const [hoveredItem, setHoveredItem] = useState("");
 
   useEffect(() => {
     setRole(localStorage.getItem("role"));
@@ -43,7 +44,7 @@ function UserSidebar() {
 
   useEffect(() => {
     const pathname = location.pathname;
-    const menuItem = pathname.substring(1); // Remove the leading '/'
+    const menuItem = pathname.substring(1); 
     setActive(menuItem);
   }, [location]);
 
@@ -52,6 +53,7 @@ function UserSidebar() {
   };
 
   const handleLogout = () => {
+    localStorage.setItem("isLoggedIn",false);
     logout();
     window.location.href = "/";
   };
@@ -89,16 +91,17 @@ function UserSidebar() {
               alignItems: "center",
             }}
           >
-             <FitbitIcon
-               sx={{
-                 display: { xs: "none", md: "flex" },
-                 fontSize: "4rem",                 color: "white",
-               }}
+            <FitbitIcon
+              sx={{
+                display: { xs: "none", md: "flex" },
+                fontSize: "4rem",
+                color: "white",
+              }}
               onClick={toggleSidebar}
-             />
-             <h2 style={{ color: "white", marginLeft: "0.2rem" }}>SkillMatrix</h2>
-       </div>
-
+            />
+            <h2 style={{ color: "white", marginLeft: "0.2rem" }}>SkillMatrix</h2>
+          </div>
+  
           <div
             style={{
               marginTop: "2rem",
@@ -107,29 +110,41 @@ function UserSidebar() {
               justifyContent: "space-between",
             }}
           >
-            <Link to="/userdashboard" style={{}}>
+            <Link to="/userdashboard">
               <MenuItem
+                className="menuItems"
                 style={{
-                  color: active === "userdashboard" ? "black" : "white",
+                  backgroundColor: active === "userdashboard" ? "rgb(50, 20, 100)" : "",
+              
                   paddingLeft: "1rem",
                   fontSize: "large",
                   display: "flex",
                   alignItems: "center",
+                  // Update text color when hovered
+                  color: hoveredItem === "userdashboard" ? "black" : "white",
                 }}
-              >  <ProfileIcon sx={{ color: "white", marginRight: "1rem" }} />
+                onMouseOver={() => setHoveredItem("userdashboard")}
+                onMouseLeave={() => setHoveredItem("")}
+              >
+                <ProfileIcon sx={{ color: "white", marginRight: "1rem" }} />
                 User Dashboard
-                
               </MenuItem>
             </Link>
             <Link to="/Certificates">
               <MenuItem
+                className="menuItems"
                 style={{
-                  color: active === "Certificates" ? "black" : "white",
+                  backgroundColor: active === "Certificates" ? "rgb(50, 20, 100)" : "",
+               
                   paddingLeft: "1rem",
                   fontSize: "large",
                   display: "flex",
                   alignItems: "center",
+                  // Update text color when hovered
+                  color: hoveredItem === "Certificates" ? "black" : "white",
                 }}
+                onMouseEnter={() => setHoveredItem("Certificates")}
+                onMouseLeave={() => setHoveredItem("")}
               >
                 <CheckCircleIcon sx={{ color: "white", marginRight: "1rem" }} />
                 Certificates
@@ -137,13 +152,19 @@ function UserSidebar() {
             </Link>
             <Link to="/Skills">
               <MenuItem
+                className="menuItems"
                 style={{
-                  color: active === "Skills" ? "black" : "white",
+                  backgroundColor: active === "Skills" ? "rgb(50, 20, 100)" : "",
+                 
                   paddingLeft: "1rem",
                   fontSize: "large",
                   display: "flex",
                   alignItems: "center",
+                  // Update text color when hovered
+                  color: hoveredItem === "Skills" ? "black" : "white",
                 }}
+                onMouseEnter={() => setHoveredItem("Skills")}
+                onMouseLeave={() => setHoveredItem("")}
               >
                 <SkillsIcon sx={{ color: "white", marginRight: "1rem" }} />
                 Skills
@@ -151,13 +172,19 @@ function UserSidebar() {
             </Link>
             <Link to="/ProjectExperence">
               <MenuItem
+                className="menuItems"
                 style={{
-                  color: active === "ProjectExperence" ? "black" : "white",
+                  backgroundColor: active === "ProjectExperence" ? "rgb(50, 20, 100)" : "",
+               
                   paddingLeft: "1rem",
                   fontSize: "large",
                   display: "flex",
                   alignItems: "center",
+                  // Update text color when hovered
+                  color: hoveredItem === "ProjectExperence" ? "black" : "white",
                 }}
+                onMouseEnter={() => setHoveredItem("ProjectExperence")}
+                onMouseLeave={() => setHoveredItem("")}
               >
                 <ProjectIcon sx={{ color: "white", marginRight: "1rem" }} />
                 Project Experience
@@ -167,13 +194,19 @@ function UserSidebar() {
               <>
                 <Link to="/CertificateForApp">
                   <MenuItem
+                    className="menuItems"
                     style={{
-                      color: active === "CertificateForApp" ? "black" : "white",
+                      backgroundColor: active === "CertificateForApp" ? "rgb(50, 20, 100)" : "",
+                     
                       paddingLeft: "1rem",
                       fontSize: "large",
                       display: "flex",
                       alignItems: "center",
+                      // Update text color when hovered
+                      color: hoveredItem === "CertificateForApp" ? "black" : "white",
                     }}
+                    onMouseEnter={() => setHoveredItem("CertificateForApp")}
+                    onMouseLeave={() => setHoveredItem("")}
                   >
                     <ApprovalIcon sx={{ color: "white", marginRight: "1rem" }} />
                     Certificates For Approval
@@ -181,26 +214,39 @@ function UserSidebar() {
                 </Link>
                 <Link to="/ProjectForApproval">
                   <MenuItem
+                    className="menuItems"
                     style={{
-                      color: active === "ProjectForApproval" ? "black" : "white",
+                      backgroundColor: active === "ProjectForApproval" ? "rgb(50, 20, 100)" : "",
+                      
                       paddingLeft: "1rem",
                       fontSize: "large",
                       display: "flex",
                       alignItems: "center",
+                      // Update text color when hovered
+                      color: hoveredItem === "ProjectForApproval" ? "black" : "white",
                     }}
-                  ><ApprovalIcon sx={{ color: "white", marginRight: "1rem" }} />
+                    onMouseEnter={() => setHoveredItem("ProjectForApproval")}
+                    onMouseLeave={() => setHoveredItem("")}
+                  >
+                    <ApprovalIcon sx={{ color: "white", marginRight: "1rem" }} />
                     Projects For Approval
                   </MenuItem>
                 </Link>
                 <Link to="/AddSkill">
                   <MenuItem
+                    className="menuItems"
                     style={{
-                      color: active === "AddSkill" ? "black" : "white",
+                      backgroundColor: active === "AddSkill" ? "rgb(50, 20, 100)" : "",
+                     
                       paddingLeft: "1rem",
                       fontSize: "large",
                       display: "flex",
                       alignItems: "center",
+                      // Update text color when hovered
+                      color: hoveredItem === "AddSkill" ? "black" : "white",
                     }}
+                    onMouseEnter={() => setHoveredItem("AddSkill")}
+                    onMouseLeave={() => setHoveredItem("")}
                   >
                     <SkillsIcon sx={{ color: "white", marginRight: "1rem" }} />
                     Add New Skill
@@ -212,27 +258,39 @@ function UserSidebar() {
               <>
                 <Link to="/signup">
                   <MenuItem
+                    className="menuItems"
                     style={{
-                      color: active === "signup" ? "black" : "white",
+                      backgroundColor: active === "signup" ? "rgb(50, 20, 100)" : "",
+                     
                       paddingLeft: "1rem",
                       fontSize: "large",
                       display: "flex",
                       alignItems: "center",
+                      // Update text color when hovered
+                      color: hoveredItem === "signup" ? "black" : "white",
                     }}
+                    onMouseEnter={() => setHoveredItem("signup")}
+                    onMouseLeave={() => setHoveredItem("")}
                   >
-                     <CreateUserIcon sx={{ color: "white", marginRight: "1rem" }} />
+                    <CreateUserIcon sx={{ color: "white", marginRight: "1rem" }} />
                     Create User
                   </MenuItem>
                 </Link>
                 <Link to="/EmployeeDetails">
                   <MenuItem
+                    className="menuItems"
                     style={{
-                      color: active === "EmployeeDetails" ? "black" : "white",
+                      backgroundColor: active === "EmployeeDetails" ? "rgb(50, 20, 100)" : "",
+                      
                       paddingLeft: "1rem",
                       fontSize: "large",
                       display: "flex",
                       alignItems: "center",
+                      // Update text color when hovered
+                      color: hoveredItem === "EmployeeDetails" ? "black" : "white",
                     }}
+                    onMouseEnter={() => setHoveredItem("EmployeeDetails")}
+                    onMouseLeave={() => setHoveredItem("")}
                   >
                     <EmployeeDetailIcon sx={{ color: "white", marginRight: "1rem" }} />
                     Employee Detail
@@ -241,17 +299,17 @@ function UserSidebar() {
               </>
             )}
             <MenuItem
+              className="menuItems"
               style={{
-               
-                color: "white",
+                color: hoveredItem === "button" ? "black" : "white",
                 paddingLeft: "1rem",
                 fontSize: "large",
                 display: "flex",
                 alignItems: "center",
-                marginTop:"2rem",
+                marginTop: "2rem",
               }}
-              onMouseEnter={(e) => e.target.style.color = "black"}
-              onMouseLeave={(e) => e.target.style.color = "white"}
+              onMouseEnter={() => setHoveredItem("button")}
+              onMouseLeave={() => setHoveredItem("")}
             >
               <button
                 onClick={handleLogout}
@@ -259,19 +317,20 @@ function UserSidebar() {
                   fontFamily: "monospace",
                   fontWeight: 700,
                   fontSize: "larger",
-                  color: "white",
-                  paddingRight:"2.5rem",
-                  
+                  color: hoveredItem === "button" ? "black" : "white",
+                  paddingRight: "2.5rem",
                   width: "100%",
                   textTransform: "none",
                   backgroundColor: "transparent",
                   border: "none",
                   cursor: "pointer",
                 }}
+                onMouseEnter={() => setHoveredItem("button")}
+              onMouseLeave={() => setHoveredItem("")}
               >
-                <IconButton style={{ color: "white", fontWeight: "bold",fontSize:'xxx-large' }}>
-                   <LogoutIcon />
-                 </IconButton>
+                <IconButton style={{ color: "white", fontWeight: "bold", fontSize: 'xxx-large' }}>
+                  <LogoutIcon />
+                </IconButton>
                 Logout
               </button>
             </MenuItem>
@@ -281,6 +340,4 @@ function UserSidebar() {
     </>
   );
 }
-
 export default UserSidebar;
-
