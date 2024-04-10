@@ -16,14 +16,14 @@ merged_data = pd.read_csv('Transformed_data.csv')
 # Convert dictionary to DataFrame
 df = pd.DataFrame(merged_data)
 
-# Apply stemming to the combined text of certificate_name, skill_name, and tech_stack
+# Apply stemming to the combined text of certificate_name, skill_name,skill_proficiency, and tech_stack
 def stem_text(text):
     stemmer = PorterStemmer()
     # Convert text to lowercase and then apply stemming
     stemmed_words = [stemmer.stem(word.lower()) for word in text.split(',')]
     return ' '.join(stemmed_words)
 
-df['combined_text'] = df['certificate_name'] + ',' + df['skill_name'] + ',' + df['tech_stack']
+df['combined_text'] = df['certificate_name'] + ',' + df['skill_name'] + ',' + df['tech_stack'] + ',' + df['skill_proficiency']
 df['stemmed_text'] = df['combined_text'].apply(stem_text)
 
 @app.route('/recommend', methods=['POST'])

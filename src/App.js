@@ -12,6 +12,7 @@ import ProjectForApp from './Componnents/Approver/ProjectForApp';
 import EmployeeDetails from './Componnents/Admin/EmployeeDetails';
 import AddSkill from './Componnents/Admin/AddSkill';
 import UserSidebar from './Componnents/user/UserSidebar';
+import Powerbi from './Componnents/RecommendFrontEnd/Powerbi';
 import EmployeeRecommendations from './Componnents/RecommendFrontEnd/Recommend';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
@@ -35,11 +36,12 @@ function App() {
         <Routes>
           <Route path="/" element={isLoggedIn ? <Navigate to="/userdashboard" /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/Reset" element={<ResetPassword  />} />
-          <Route path="/EmployeeRecommendations" element={<EmployeeRecommendations  />} />
+          <Route path="/EmployeeRecommendation" element={<EmployeeRecommendations  />} />
+          <Route path="/Powerbi" element={<Powerbi  />} />
           <Route path="/ResetPassword" element={<ChangePassword  />} />
           {isLoggedIn && (
             <>
-            <Route path="/Signup" element={<Signup  />} />
+              <Route path="/Signup" element={<Signup  />} />
               <Route path="/userdashboard" element={<UserDashBoard />} />
               <Route path="/Certificates" element={<Certificates />} />
               <Route path="/Skills" element={<Skill />} />
