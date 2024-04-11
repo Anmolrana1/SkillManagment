@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn');
     const userRole = localStorage.getItem('role');
-    if (isLoggedIn === 'true' && userRole) {
+    if (loggedIn === 'true' && userRole) {
       setIsLoggedIn(loggedIn);
       setRole(userRole);
     }

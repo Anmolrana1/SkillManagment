@@ -213,7 +213,7 @@ function Signup() {
                           </div>
                         </div>
                       </div>
-                      <div className="col">
+                      <div className="row">
                           <div className="form-outline" style={{ width: "100%" }}>
                           <label className="form-label" htmlFor="formPhone">Phone Number *</label>
                             <input

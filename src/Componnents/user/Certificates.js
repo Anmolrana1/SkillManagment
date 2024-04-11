@@ -129,7 +129,13 @@ function Certificate() {
             <form className="custom-form mt-4" onSubmit={handleSubmit}>
               <h2
                 className="mb-4"
-                style={{ fontFamily: "monospace", fontWeight: "bold" }}
+                style={{
+                  fontWeight: "bold",
+                  color: "#333",
+                  marginBottom: "20px",
+                  margin: "2rem",
+                  textDecoration: "underline",
+                }}
               >
                 Add Certificate 
               </h2>
@@ -214,7 +220,13 @@ function Certificate() {
         </div>
       </div>
       <div className="container mt-5">
-  <h3 className="mb-4" style={{ fontFamily: "monospace", fontWeight: "bolder" }}>
+  <h3 className="mb-4" style={{
+            fontWeight: "bold",
+            color: "#333",
+            marginBottom: "20px",
+            margin: "2rem",
+            textDecoration: "underline",
+          }}>
     Your Certificates
   </h3>
   {loading ? (

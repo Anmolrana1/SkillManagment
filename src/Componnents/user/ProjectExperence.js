@@ -130,7 +130,13 @@ function ProjectExperence() {
         <div className="row justify-content-center">
           <div className="col-md-6">
             <form className="custom-form mt-4" onSubmit={handleSubmit}>
-              <h2 className="mb-4" style={{ fontFamily: "monospace", fontWeight: "bold" }}>Add Project Experience</h2>
+              <h2 className="mb-4" style={{
+            fontWeight: "bold",
+            color: "#333",
+            marginBottom: "20px",
+            margin: "2rem",
+            textDecoration: "underline",
+          }}>Add Project Experience</h2>
               <table className="table table-borderless">
                 <tbody>
                   <tr>
@@ -202,7 +208,13 @@ function ProjectExperence() {
         </div>
       </div>
       <div className="container mt-5">
-        <h3 className="mb-4" style={{ fontFamily: "monospace", fontWeight: "bolder" }}>Your Project Experiences</h3>
+        <h3 className="mb-4" style={{
+            fontWeight: "bold",
+            color: "#333",
+            marginBottom: "20px",
+            margin: "2rem",
+            textDecoration: "underline",
+          }}>Your Project Experiences</h3>
         {loading ? (
           <p>Loading...</p>
         ) : error ? (

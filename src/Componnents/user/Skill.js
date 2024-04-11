@@ -122,7 +122,13 @@ function Skill() {
             <form className="custom-form mt-4" onSubmit={handleSubmit}>
               <h2
                 className="mb-4"
-                style={{ fontFamily: "monospace", fontWeight: "bold" }}
+                style={{
+                  fontWeight: "bold",
+                  color: "#333",
+                  marginBottom: "20px",
+                  margin: "2rem",
+                  textDecoration: "underline",
+                }}
               >
                 Add Skill
               </h2>
@@ -178,7 +184,13 @@ function Skill() {
         </div>
       </div>
       <div className="container mt-5">
-        <h3 style={{ fontFamily: "monospace", fontWeight: "bolder" }}>
+        <h3 style={{
+            fontWeight: "bold",
+            color: "#333",
+            marginBottom: "20px",
+            margin: "2rem",
+            textDecoration: "underline",
+          }}>
           Your Skills
         </h3>
         {loading ? (
