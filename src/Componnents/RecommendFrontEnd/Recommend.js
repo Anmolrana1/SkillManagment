@@ -24,10 +24,22 @@ const EmployeeRecommendations = () => {
   };
 
   const handleAddSkill = () => {
+    if(skill==='' || proficiency===''){
+      alert('please fill the form correctly')
+      return
+    }
+    if(recommendations.length>0){
+      setRecommendations([])
+      setRequirements({})
+    }
     const updatedTechStack = [...requirements.techStack];
     const updatedProficiency = [...requirements.proficiency];
-
+if (updatedTechStack.includes(skill)) {
+      alert("Skill already present .");
+      return;
+    }
     updatedTechStack.push(skill);
+    
     updatedProficiency.push(proficiency);
 
     setRequirements((prev) => ({
@@ -41,10 +53,7 @@ const EmployeeRecommendations = () => {
   };
 
   const handleRecommendations = async () => {
-    if(skill==='' || proficiency===''){
-      alert('please fill the form correctly')
-      return
-    }
+    
     setShow(false);
     setLoading(true);
     setRequirements({
