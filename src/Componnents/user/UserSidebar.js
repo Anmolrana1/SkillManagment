@@ -4,13 +4,14 @@ import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 // import { useAuth } from "../AuthContext";
 import './UserNavbar.css'
 import LogoutIcon from "@mui/icons-material/Logout";
-import {  IconButton } from "@mui/material";
 import FitbitIcon from "@mui/icons-material/Fitbit";
 import ProfileIcon from "@mui/icons-material/AccountCircle";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import SkillsIcon from "@mui/icons-material/EmojiObjects";
 import ProjectIcon from "@mui/icons-material/Work";
 import ApprovalIcon from "@mui/icons-material/ThumbUp";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'; // Import the RecommendIcon from Material-UI
+import BarChartIcon from '@mui/icons-material/BarChart';
 import CreateUserIcon from "@mui/icons-material/PersonAdd";
 import EmployeeDetailIcon from "@mui/icons-material/People";
 import { Link, useLocation } from "react-router-dom";
@@ -127,7 +128,7 @@ function UserSidebar() {
                 onMouseLeave={() => setHoveredItem("")}
               >
                 <ProfileIcon sx={{ color: "white", marginRight: "1rem" }} />
-                User Dashboard
+                Profile
               </MenuItem>
             </Link>
             <Link to="/Certificates">
@@ -296,16 +297,53 @@ function UserSidebar() {
                     Employee Detail
                   </MenuItem>
                 </Link>
+                <Link to="/EmployeeRecommendation">
+                  <MenuItem
+                    className="menuItems"
+                    style={{
+                      backgroundColor: active === "Recommend" ? "rgb(50, 20, 100)" : "",
+                      
+                      paddingLeft: "1rem",
+                      fontSize: "large",
+                      display: "flex",
+                      alignItems: "center",
+                      // Update text color when hovered
+                      color: hoveredItem === "Recommend" ? "black" : "white",
+                    }}
+                    onMouseEnter={() => setHoveredItem("Recommend")}
+                    onMouseLeave={() => setHoveredItem("")}
+                  >
+                    <ThumbUpIcon sx={{ color: "white", marginRight: "1rem" }} />
+                    Recommend
+                  </MenuItem>
+                </Link>
+                <Link to="/Powerbi">
+                  <MenuItem
+                    className="menuItems"
+                    style={{
+                      backgroundColor: active === "Powerbi" ? "rgb(50, 20, 100)" : "",
+                      
+                      paddingLeft: "1rem",
+                      fontSize: "large",
+                      display: "flex",
+                      alignItems: "center",
+                      color: hoveredItem === "Powerbi" ? "black" : "white",
+                    }}
+                    onMouseEnter={() => setHoveredItem("Powerbi")}
+                    onMouseLeave={() => setHoveredItem("")}
+                  >
+                    <BarChartIcon sx={{ color: "white", marginRight: "1rem" }} />
+                    Analytics
+                  </MenuItem>
+                </Link>
+                
               </>
             )}
             <MenuItem
               className="menuItems"
               style={{
                 color: hoveredItem === "button" ? "black" : "white",
-                paddingLeft: "1rem",
                 fontSize: "large",
-                display: "flex",
-                alignItems: "center",
                 marginTop: "2rem",
               }}
               onMouseEnter={() => setHoveredItem("button")}
@@ -318,7 +356,8 @@ function UserSidebar() {
                   fontWeight: 700,
                   fontSize: "larger",
                   color: hoveredItem === "button" ? "black" : "white",
-                  paddingRight: "2.5rem",
+                  paddingRight: "3rem",
+                 
                   width: "100%",
                   textTransform: "none",
                   backgroundColor: "transparent",
@@ -328,9 +367,9 @@ function UserSidebar() {
                 onMouseEnter={() => setHoveredItem("button")}
               onMouseLeave={() => setHoveredItem("")}
               >
-                <IconButton style={{ color: "white", fontWeight: "bold", fontSize: 'xxx-large' }}>
-                  <LogoutIcon />
-                </IconButton>
+              
+                  <LogoutIcon  sx={{ color: "white", marginRight: "1rem" }}/>
+             
                 Logout
               </button>
             </MenuItem>
