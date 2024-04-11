@@ -28,7 +28,7 @@ function App() {
       setIsLoggedIn(true);
       setRole(userRole);
     }
-  }, []);
+  }, [isLoggedIn,role]);
 
   return (
     <div className="App">
@@ -36,12 +36,11 @@ function App() {
         <Routes>
           <Route path="/" element={isLoggedIn ? <Navigate to="/userdashboard" /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/Reset" element={<ResetPassword  />} />
-          <Route path="/EmployeeRecommendation" element={<EmployeeRecommendations  />} />
-          <Route path="/Powerbi" element={<Powerbi  />} />
+
           <Route path="/ResetPassword" element={<ChangePassword  />} />
           {isLoggedIn && (
             <>
-              <Route path="/Signup" element={<Signup  />} />
+
               <Route path="/userdashboard" element={<UserDashBoard />} />
               <Route path="/Certificates" element={<Certificates />} />
               <Route path="/Skills" element={<Skill />} />
@@ -54,8 +53,11 @@ function App() {
               )}
               {role === "Admin" && (
                 <>
+                              <Route path="/Signup" element={<Signup  />} />
                   <Route path="/EmployeeDetails" element={<EmployeeDetails />} />
                   <Route path="/AddSkill" element={<AddSkill />} />
+                  <Route path="/EmployeeRecommendation" element={<EmployeeRecommendations  />} />
+                  <Route path="/Powerbi" element={<Powerbi  />} />
                 </>
               )}
               <Route path="/UserSidebar" element={<UserSidebar />} />
