@@ -24,8 +24,8 @@ function App() {
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn');
     const userRole = localStorage.getItem('role');
-    if (loggedIn === 'true' && userRole) {
-      setIsLoggedIn(true);
+    if (isLoggedIn === 'true' && userRole) {
+      setIsLoggedIn(loggedIn);
       setRole(userRole);
     }
   }, [isLoggedIn,role]);
@@ -35,8 +35,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={isLoggedIn ? <Navigate to="/userdashboard" /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/Reset" element={<ResetPassword  />} />
-
+          <Route path="/Reset" element={<ResetPassword />} />
           <Route path="/ResetPassword" element={<ChangePassword  />} />
           {isLoggedIn && (
             <>

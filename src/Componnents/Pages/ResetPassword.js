@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {  useLocation } from "react-router-dom";
 import axios from "axios";
@@ -14,11 +14,6 @@ function ResetPassword({isLoggedIn}) {
   const [ResetData, setResetData] = useState({ token: token, Password: "" });
   const [Password, setPassword] = useState('');
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/');
-      return; 
-    }},[isLoggedIn,navigate])
   const handleReset = async () => {
     if (Password !== ResetData.Password) {
       return alert("Passwords do not match");
@@ -27,6 +22,12 @@ function ResetPassword({isLoggedIn}) {
       alert("Invalid token or missing password.");
       return;
     }
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+    if (!passwordRegex.test(Password)) {
+      alert("Password must contain at least one digit, one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long.");
+      return;
+    }
+
     try {
       console.log("ResetData", ResetData);
       const response = await axios.post(

@@ -16,11 +16,6 @@ function ChangePassword({isLoggedIn}) {
   const [DefaultPassword, setDefaultPassword] = useState(''); // State for old password
   const [Password, setPassword] = useState(''); // State for new password
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/');
-      return; 
-    }},[isLoggedIn,navigate])
 
   useEffect(() => {
     if (token) {
@@ -44,6 +39,12 @@ function ChangePassword({isLoggedIn}) {
       alert("Invalid token or missing password.");
       return;
     }
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+    if (!passwordRegex.test(Password)) {
+      alert("Password must contain at least one digit, one lowercase letter, one uppercase letter, one special character, and be at least 8 characters long.");
+      return;
+    }
+
     try {
       console.log("ResetData", ResetData);
       const response = await axios.post(

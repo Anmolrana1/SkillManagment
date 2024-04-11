@@ -41,6 +41,10 @@ const EmployeeRecommendations = () => {
   };
 
   const handleRecommendations = async () => {
+    if(skill==='' || proficiency===''){
+      alert('please fill the form correctly')
+      return
+    }
     setShow(false);
     setLoading(true);
     setRequirements({
