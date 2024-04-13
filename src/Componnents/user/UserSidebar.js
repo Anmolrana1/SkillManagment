@@ -54,9 +54,10 @@ function UserSidebar() {
   };
 
   const handleLogout = () => {
-    localStorage.setItem("isLoggedIn",false);
     localStorage.clear();
     sessionStorage.clear();
+
+  
     logout();
     window.location.href = "/";
   };

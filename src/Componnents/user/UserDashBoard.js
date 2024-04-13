@@ -161,6 +161,8 @@ function UserDashBoard({ isLoggedIn }) {
   );
 }
 
+
+//popup window
 const EditUserPopup = ({ userData, handleClose }) => {
   const [editedUserData, setEditedUserData] = useState({
     FirstName: userData.FirstName,
@@ -260,7 +262,7 @@ const EditUserPopup = ({ userData, handleClose }) => {
             }}
           />
         </div>
-        <div style={{ marginBottom: "1rem" }}>
+        {/* <div style={{ marginBottom: "1rem" }}>
           <label htmlFor="Designation">Designation:</label>
           <input
             type="text"
@@ -275,7 +277,7 @@ const EditUserPopup = ({ userData, handleClose }) => {
               border: "1px solid #ccc",
             }}
           />
-        </div>
+        </div> */}
         <div style={{ marginBottom: "1rem" }}>
           <label htmlFor="Empid">EmpID:</label>
           <input
@@ -324,7 +326,7 @@ const EditUserPopup = ({ userData, handleClose }) => {
             }}
           />
         </div>
-        <div style={{ marginBottom: "1rem" }}>
+        {/* <div style={{ marginBottom: "1rem" }}>
           <label htmlFor="DOJ">DOJ:</label>
           <input
             type="date"
@@ -339,7 +341,7 @@ const EditUserPopup = ({ userData, handleClose }) => {
               border: "1px solid #ccc",
             }}
           />
-        </div>
+        </div> */}
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button
             onClick={handleSubmit}

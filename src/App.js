@@ -14,27 +14,27 @@ import AddSkill from './Componnents/Admin/AddSkill';
 import UserSidebar from './Componnents/user/UserSidebar';
 import Powerbi from './Componnents/RecommendFrontEnd/Powerbi';
 import EmployeeRecommendations from './Componnents/RecommendFrontEnd/Recommend';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [role, setRole] = useState('');
-
-  useEffect(() => {
+  useEffect(() => {  
     const loggedIn = localStorage.getItem('isLoggedIn');
     const userRole = localStorage.getItem('role');
     if (loggedIn === 'true' && userRole) {
-      setIsLoggedIn(loggedIn);
+      setIsLoggedIn(true);
       setRole(userRole);
     }
+
   }, [isLoggedIn,role]);
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={isLoggedIn ? <Navigate to="/userdashboard" /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/Reset" element={<ResetPassword />} />
           <Route path="/ResetPassword" element={<ChangePassword  />} />
           {isLoggedIn && (

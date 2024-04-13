@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginSignupNavbar from "./LoginSignupNavbar";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,10 @@ import { jwtDecode } from "jwt-decode";
 function Login({setIsLoggedIn}) {
   const navigate = useNavigate();
   const [loginData, setloginData] = useState({ Email: "", Password: "" });
-
+  useEffect(()=>{
+    localStorage.clear();
+    sessionStorage.clear();
+  },[])
 
   //login function 
   const handleLogin = async () => {
