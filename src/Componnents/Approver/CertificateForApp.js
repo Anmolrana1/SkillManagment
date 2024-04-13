@@ -19,12 +19,14 @@ function CertificateForApp() {
   }, []);
 
   async function fetchCertificates(Email) {
+    
     try {
       const response = await axios.post(
         "http://localhost:5000/profile/getCertificates",
         { Email,command:'yes' }
       );
       setUserCertificates(response.data.certificates);
+      console.log(response.data.certificates)
       setLoading(false);
     } catch (error) {
       console.error("Error retrieving user certificates:", error);
@@ -33,12 +35,12 @@ function CertificateForApp() {
     }
   }
 
-  const handleApprove = async (Empid,certificateName) => {
-    console.log(Empid)
+  const handleApprove = async (id,Empid) => {
+    console.log(id)
     try {
       const response = await axios.post(
         "http://localhost:5000/profile/approveCertificate",
-        { Empid, command: "Approve" ,certificateName}
+        { command: "Approve",Empid ,id}
       );
       if (response.status === 200) {
         alert("Approved");
@@ -50,11 +52,11 @@ function CertificateForApp() {
     }
   };
 
-  const handleReject = async (Empid,certificateName) => {
+  const handleReject = async (id,Empid) => {
     try {
       const response = await axios.post(
         "http://localhost:5000/profile/approveCertificate",
-        { Empid, command: "Reject" ,certificateName}
+        {  command: "Reject",Empid ,id}
       );
       if (response.status === 200) {
         alert("Rejected");
@@ -106,7 +108,7 @@ function CertificateForApp() {
                         <button
                           type="button"
                           className="btn btn-primary btn-block"
-                          onClick={() => handleApprove(item.Empid,item.certificateName)}
+                          onClick={() => handleApprove(item._id,item.Empid)}
                         >
                           Approve
                         </button>
@@ -115,7 +117,7 @@ function CertificateForApp() {
                         <button
                           type="button"
                           className="btn btn-primary btn-block"
-                          onClick={() => handleReject(item.Empid,item.certificateName)}
+                          onClick={() => handleReject(item._id,item.Empid)}
                         >
                           Reject
                         </button>

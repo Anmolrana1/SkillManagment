@@ -1,7 +1,7 @@
 const express=require('express')
 const router = express.Router();
 const {GetUser,setSkill,getSkill,addProjectExperience,getProjectExperiences
-,addCertificate,getCertificates}=require('../controllers/userController')
+,addCertificate,getCertificates,updateUser}=require('../controllers/userController')
 const {approveCertificate,approveProject,getEmail,AddSkill,getAddedSkill}=require('../controllers/approverController')
 
 
@@ -17,4 +17,5 @@ router.post('/approveCertificate',approveCertificate)
 router.post('/getEmail',getEmail)
 router.post('/addSkill',AddSkill)
 router.post('/getAddedSkill',getAddedSkill)
+router.put('/updateUserProfile',updateUser)
 module.exports = router;

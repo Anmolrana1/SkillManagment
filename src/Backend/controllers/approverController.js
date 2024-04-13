@@ -19,10 +19,10 @@ const transporter = nodemailer.createTransport({
 
 
 async function approveCertificate(req, res) {
-    const { Empid, command,certificateName } = req.body;
-    console.log(Empid, command)
+    const {command,Empid, id} = req.body;
+    console.log(id, command)
     try {
-      const userCertificate = await Certificate.findOne({ Empid: Empid,certificateName:certificateName });
+      const userCertificate = await Certificate.findById(id);
       if (!userCertificate) {
         return res.status(400).json({ error: "Certificate not found" });
       }

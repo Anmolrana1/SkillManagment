@@ -236,6 +236,27 @@ async function getCertificates(req, res) {
   }
 }
 
+
+const updateUser = async (req, res) => {
+  try {
+    const editedUserData = req.body;
+    const Empid = editedUserData.Empid;
+
+    // Find the user by Empid and update their details
+    const updatedUser = await UserDetails.findOneAndUpdate({ Empid }, editedUserData, { new: true });
+
+    // Check if the user exists and send the updated user data in response
+    if (updatedUser) {
+      res.status(200).json(updatedUser);
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 module.exports = {
   GetUser,
   setSkill,
@@ -244,4 +265,5 @@ module.exports = {
   addProjectExperience,
   addCertificate,
   getCertificates,
+  updateUser
 };
